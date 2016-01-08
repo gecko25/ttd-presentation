@@ -1,12 +1,15 @@
 /*jslint indent: 2*/
 /*globals assert, testCase*/
 
-var date = new Date(1989, 1, 25);
+/*Part one*/
+var date = new Date(1989, 0, 25);
 console.log('%Y:' + date.strftime('%Y'));
 console.log('%m:' + date.strftime('%m'));
 console.log('%d:' + date.strftime('%d'));
 console.log('%y:' + date.strftime('%y'));
 console.log('%F:' + date.strftime('%F'));
+
+
 
 /*
 testCase("strftime test", {

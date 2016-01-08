@@ -29,15 +29,15 @@ Date.prototype.strftime = (function () {
   Date.formats = {
     // Formatting methods
     d: function (date) {
-      return zeroPad(date.getDate());
+      return date.getDate();
     },
 
     m: function (date) {
-      return zeroPad(date.getMonth() + 1);
+      return date.getMonth() + 1;
     },
 
     y: function (date) {
-      return zeroPad(date.getYear() % 100);
+      return date.getYear() % 100;
     },
 
     Y: function (date) {

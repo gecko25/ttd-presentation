@@ -45,15 +45,12 @@
 				<section>
   <h1>Test Driven Development</h1>
   <h6>(With javascript &#9786;)</h6>
-  <p class="slide-num">1</p>
 </section>
 				<section>
   <img src="../assets/johansenBook.png">
-  <p class="slide-num">2</p>
 </section>
 				<!-- Veritcal Nexted Slides-->
 <section>
-<p class="slide-num">3</p>
   <section>
     <pre><code>
   var mybirthday = new Date(1989, 0, 25);
@@ -120,7 +117,6 @@
 
 </section>
 				<section>
-  <p class="slide-num">4</p>
   <aside class="notes">
     Ask people what do we need to test here?
     Without getting very detail oriented, first and foremost
@@ -134,35 +130,41 @@
 
 </section>
 				<section>
-  <p class="slide-num">5</p>
-  <section>
     <h3>Without automated testing:</h3>
-    <pre><code>var date = new Date(1989, 1, 25);
+    <pre><code>var date = new Date(1989, 0, 25);
     console.log('%Y:' + date.strftime('%Y'));
     console.log('%m:' + date.strftime('%m'));
     console.log('%d:' + date.strftime('%d'));
     console.log('%y:' + date.strftime('%y'));
     console.log('%F:' + date.strftime('%F'));</pre></code>
-  </section>
-
+  <pre><code>    %Y:1989
+    %m:1
+    %d:25
+    %y:89
+    %F:1989-1-25</pre></code>
+</section>
+				<section>
+  <h3>How can we make this automatic?</h3>
+  <h3>HTML test page!</h3>
+  <aside class="notes">
+    Show strftime_test.html, strftime_test.js</br>
+    Show how this outputs in the console.
+  </aside>
+</section>
+				<section>
   <section>
-
+  <img src="../assets/strftime_test_html.png">
+  <img src="../assets/strftime_js.png">
+  </section>
+  <section>
+    <img src="../assets/console_output.png">
   </section>
 </section>
 				<section>
-<p class="slide-num">6</p>
 </section>
 				<section>
-<p class="slide-num">7</p>
 </section>
 				<section>
-<p class="slide-num">8</p>
-</section>
-				<section>
-<p class="slide-num">9</p>
-</section>
-				<section>
-<p class="slide-num">10</p>
 </section>
 				<section>
 
