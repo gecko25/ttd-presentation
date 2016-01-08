@@ -16,6 +16,8 @@
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/custom.css">
+
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -43,78 +45,195 @@
 				<section>
   <h1>Test Driven Development</h1>
   <h6>(With javascript &#9786;)</h6>
+  <p class="slide-num">1</p>
 </section>
 				<section>
   <img src="../assets/johansenBook.png">
+  <p class="slide-num">2</p>
+</section>
+				<!-- Veritcal Nexted Slides-->
+<section>
+<p class="slide-num">3</p>
+  <section>
+    <pre><code>
+  var mybirthday = new Date(1989, 0, 25);
+  mybirthday.strftime('%m');  //"01"
+  mybirthday.strftime('%F');  //"1989-01-25"
+
+</pre></code>
+  </section>
+
+  <section>
+    <aside class="notes">Some notes</aside>
+
+    <pre><code>Date.prototype.strftime = (function () {
+  function strftime(format) {
+    var date = this;
+
+    return (format + "").replace(/%([a-zA-Z])/g, function (m, f) {
+      var formatter = Date.formats && Date.formats[f];
+
+        //single formatter ('%d')
+      if (typeof formatter == "function") {
+        return formatter.call(Date.formats, date);
+
+        //format shorthands ('%Y-%m-%d')
+      } else if (typeof formatter == "string") {
+        return date.strftime(formatter);
+      }
+
+      return f;
+    });
+  }
+
+  // Internal helper
+  function zeroPad(num) {
+    return (+num < 10 ? "0" : "") + num;
+  }
+
+  Date.formats = {
+    // Formatting methods
+    d: function (date) {
+      return zeroPad(date.getDate());
+    },
+
+    m: function (date) {
+      return zeroPad(date.getMonth() + 1);
+    },
+
+    y: function (date) {
+      return zeroPad(date.getYear() % 100);
+    },
+
+    Y: function (date) {
+      return date.getFullYear();
+    },
+
+    // Format shorthands
+    F: "%Y-%m-%d",
+    D: "%m/%d/%y"
+  };
+
+  return strftime;
+}());</code></pre>
+  </section>
+
 </section>
 				<section>
-  <pre><code>Date.prototype.strftime = ( function () {
-function strftime(format) {
-var date = this;
+  <p class="slide-num">4</p>
+  <aside class="notes">
+    Ask people what do we need to test here?
+    Without getting very detail oriented, first and foremost
+    we need to check the output is giving us what we need</aside>
+  <h3>How do we test this method?</h3>
+  <ul>
+    <li>What do we expect the output to be?</li>
+    <li>What is our assumed state?</li>
+  </ul>
+  <p class="fragment orange"><em>What do we expect our output to be based on our assumed state?</em></p>
 
-return (format + "").replace(/%([a-zA-Z])/g, function (m, f) {
-var formatter = Date.formats && Date.formats[f];
-
-if (typeof formatter == "function") {
-return formatter.call(Date.formats, date);
-} else if (typeof formatter == "string") {
-return date.strftime(formatter);
-}
-
-return f;
-});
-}
-
-// Internal helper
-function zeroPad(num) {
-return (+num < 10 ? "0" : "") + num;
-}
-
-Date.formats = {
-// Formatting methods
-d: function (date) {
-return zeroPad(date.getDate());
-},
-
-m: function (date) {
-return zeroPad(date.getMonth() + 1);
-},
-
-y: function (date) {
-return zeroPad(date.getYear() % 100);
-},
-
-Y: function (date) {
-return date.getFullYear();
-},
-
-j: function (date) {
-var jan1 = new Date(date.getFullYear(), 0, 1);
-var diff = date.getTime() - jan1.getTime();
-
-// 86400000 == 60 * 60 * 24 * 1000
-return Math.ceil(diff / 86400000);
-},
-
-// Format shorthands
-F: "%Y-%m-%d",
-D: "%m/%d/%y"
-};
-
-return strftime;
-}());
-  </pre></code>
 </section>
-				<!-- build:include ../slides/slide-04.html --><!-- /build -->
-				<!-- build:include ../slides/slide-05.html --><!-- /build -->
-				<!-- build:include ../slides/slide-06.html --><!-- /build -->
-				<!-- build:include ../slides/slide-07.html --><!-- /build -->
-				<!-- build:include ../slides/slide-08.html --><!-- /build -->
-				<!-- build:include ../slides/slide-09.html --><!-- /build -->
-				<!-- build:include ../slides/slide-10.html --><!-- /build -->
-				<!-- build:include ../slides/slide-11.html --><!-- /build -->
-				<!-- build:include ../slides/slide-12.html --><!-- /build -->
-				<!-- build:include ../slides/slide-13.html --><!-- /build -->
+				<section>
+  <p class="slide-num">5</p>
+  <section>
+    <h3>Without automated testing:</h3>
+    <pre><code>var date = new Date(1989, 1, 25);
+    console.log('%Y:' + date.strftime('%Y'));
+    console.log('%m:' + date.strftime('%m'));
+    console.log('%d:' + date.strftime('%d'));
+    console.log('%y:' + date.strftime('%y'));
+    console.log('%F:' + date.strftime('%F'));</pre></code>
+  </section>
+
+  <section>
+
+  </section>
+</section>
+				<section>
+<p class="slide-num">6</p>
+</section>
+				<section>
+<p class="slide-num">7</p>
+</section>
+				<section>
+<p class="slide-num">8</p>
+</section>
+				<section>
+<p class="slide-num">9</p>
+</section>
+				<section>
+<p class="slide-num">10</p>
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+				<section>
+
+</section>
+
 			</div>
 
 		</div>

@@ -1,3 +1,68 @@
+<!-- Veritcal Nexted Slides-->
 <section>
+<p class="slide-num">3</p>
+  <section>
+    <pre><code>
+  var mybirthday = new Date(1989, 0, 25);
+  mybirthday.strftime('%m');  //"01"
+  mybirthday.strftime('%F');  //"1989-01-25"
+
+</pre></code>
+  </section>
+
+  <section>
+    <aside class="notes">Some notes</aside>
+
+    <pre><code>Date.prototype.strftime = (function () {
+  function strftime(format) {
+    var date = this;
+
+    return (format + "").replace(/%([a-zA-Z])/g, function (m, f) {
+      var formatter = Date.formats && Date.formats[f];
+
+        //single formatter ('%d')
+      if (typeof formatter == "function") {
+        return formatter.call(Date.formats, date);
+
+        //format shorthands ('%Y-%m-%d')
+      } else if (typeof formatter == "string") {
+        return date.strftime(formatter);
+      }
+
+      return f;
+    });
+  }
+
+  // Internal helper
+  function zeroPad(num) {
+    return (+num < 10 ? "0" : "") + num;
+  }
+
+  Date.formats = {
+    // Formatting methods
+    d: function (date) {
+      return zeroPad(date.getDate());
+    },
+
+    m: function (date) {
+      return zeroPad(date.getMonth() + 1);
+    },
+
+    y: function (date) {
+      return zeroPad(date.getYear() % 100);
+    },
+
+    Y: function (date) {
+      return date.getFullYear();
+    },
+
+    // Format shorthands
+    F: "%Y-%m-%d",
+    D: "%m/%d/%y"
+  };
+
+  return strftime;
+}());</code></pre>
+  </section>
 
 </section>

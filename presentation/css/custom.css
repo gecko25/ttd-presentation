@@ -1,0 +1,11 @@
+.orange{
+  color:#ff8533;
+}
+
+p.slide-num{
+  position: absolute;
+  right: 0vw;
+  bottom: 0vh;
+  color: gray;
+  font-size: 12px;
+}
