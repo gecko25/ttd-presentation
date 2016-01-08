@@ -142,7 +142,7 @@ module.exports = function(grunt) {
 				tasks: 'css-core'
 			},
 			html: {
-				files: [ 'index.html'],
+				files: [ 'slides/*.html'],
 				tasks: 'processhtml'
 			},
 			markdown: {
