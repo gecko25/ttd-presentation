@@ -1,13 +1,36 @@
 /*jslint indent: 2*/
 /*globals assert, testCase*/
 
-/*Part one*/
+/*Part one
 var date = new Date(1989, 0, 25);
 console.log('%Y:' + date.strftime('%Y'));
 console.log('%m:' + date.strftime('%m'));
 console.log('%d:' + date.strftime('%d'));
 console.log('%y:' + date.strftime('%y'));
 console.log('%F:' + date.strftime('%F'));
+*/
+
+/*Part Two*/
+var date = new Date(1989, 0, 25);
+try{
+  assert("%Y should return full year",
+         date.strftime("%Y") === "1989");
+
+  assert("%m should return month",
+        date.strftime("%m") === "01");
+
+  assert("%d should return date",
+         date.strftime("%d") === "25");
+
+  assert("%y should return year as two digits",
+      date.strftime("%y") === "89");
+
+  assert("%F should be shortcut for %Y-%m-%d",
+         date.strftime("%F") === "%Y-%m-%d");
+}catch(e){
+  console.log("Test failed:" + e.message)
+}
+
 
 
 

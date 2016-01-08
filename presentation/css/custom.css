@@ -1,3 +1,15 @@
 .orange{
   color:#ff8533;
 }
+
+p.left-align{
+  text-align: left;
+}
+
+p.right-align{
+  text-align: left;
+}
+
+p.small{
+  font-size: smaller;
+}

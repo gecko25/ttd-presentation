@@ -159,10 +159,70 @@
   <section>
     <img src="../assets/console_output.png">
   </section>
+  <aside class="notes">
+    This is cool.. but there are obvious ways to make this better.</br>
+    
+
+  </aside>
 </section>
 				<section>
+  <h2>Assertions</h2>
+  <aside class="notes">
+    Assertions are the heart of testing.</br>
+    Remember the earlier slide?
+  </aside>
+  <p class="orange">
+    What do we expect our output to be</br>
+    based on our assumed state?
+  </p></br>
+
+  <div class="fragment">
+    <p class="right-align small">"I expect, assuming date=Jan 25 1989, date.strfttime(%d) to return 25"</p>
+    <p class="right-align small">"I expect the button to turn blue when I click it"</p>
+  </div>
 </section>
 				<section>
+  <section>
+    <h2>Assert Functions</h2>
+    <pre><code>function assert(message, expr) {
+    if (!expr) {
+      throw new Error(message);
+    }
+
+    assert.count++;
+
+    return true;
+  }
+
+  assert.count = 0;
+    }</pre></code>
+
+    <ol>
+      <li>Expression to evaluate</li>
+      <li>Throw statement</li>
+      <li>Counter</li>
+    </ol>
+  </section>
+
+  <section>
+    <pre><code>var bday = new Date(1989, 0, 25);
+      
+try{
+  assert("%Y should return full year",
+         Date.formats.Y(this.date) === 1989);
+  assert("%m should return month",
+        Date.formats.m(this.date) === "01");
+  assert("%d should return date",
+         Date.formats.d(this.date) === "25");
+  assert("%y should return year as two digits",
+        Date.formats.y(this.date) === "89");
+  assert("%F should be shortcut for %Y-%m-%d",
+         Date.formats.F === "%Y-%m-%d");
+}catch(e){
+  console.log("Test failed:" + message);
+}
+    </pre></code>
+  </section>
 </section>
 				<section>
 </section>
@@ -252,7 +312,7 @@
 				progress: true,
 				history: true,
 				center: true,
-
+				slideNumber: true,
 				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
 				// Optional reveal.js plugins

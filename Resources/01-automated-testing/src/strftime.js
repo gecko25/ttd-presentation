@@ -20,24 +20,25 @@ Date.prototype.strftime = (function () {
   }
 
   // Internal helper
-  /*
+
   function zeroPad(num) {
-    return (+num < 10 ? "0" : "") + num;
+    //return (+num < 10 ? "0" : "") + num;
+    return "" + num;
   }
-  */
+
 
   Date.formats = {
     // Formatting methods
     d: function (date) {
-      return date.getDate();
+      return zeroPad(date.getDate());
     },
 
     m: function (date) {
-      return date.getMonth() + 1;
+      return zeroPad(date.getMonth() + 1);
     },
 
     y: function (date) {
-      return date.getYear() % 100;
+      return zeroPad(date.getYear() % 100);
     },
 
     Y: function (date) {

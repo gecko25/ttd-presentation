@@ -1,2 +1,43 @@
 <section>
+  <section>
+    <h2>Assert Functions</h2>
+    <pre><code>function assert(message, expr) {
+    if (!expr) {
+      throw new Error(message);
+    }
+
+    assert.count++;
+
+    return true;
+  }
+
+  assert.count = 0;
+    }</pre></code>
+
+    <ol>
+      <li>Expression to evaluate</li>
+      <li>Throw statement</li>
+      <li>Counter</li>
+    </ol>
+  </section>
+
+  <section>
+    <pre><code>var bday = new Date(1989, 0, 25);
+      
+try{
+  assert("%Y should return full year",
+         Date.formats.Y(this.date) === 1989);
+  assert("%m should return month",
+        Date.formats.m(this.date) === "01");
+  assert("%d should return date",
+         Date.formats.d(this.date) === "25");
+  assert("%y should return year as two digits",
+        Date.formats.y(this.date) === "89");
+  assert("%F should be shortcut for %Y-%m-%d",
+         Date.formats.F === "%Y-%m-%d");
+}catch(e){
+  console.log("Test failed:" + message);
+}
+    </pre></code>
+  </section>
 </section>
