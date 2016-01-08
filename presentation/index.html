@@ -182,7 +182,6 @@
   </div>
 </section>
 				<section>
-  <section>
     <h2>Assert Functions</h2>
     <pre><code>function assert(message, expr) {
     if (!expr) {
@@ -202,38 +201,73 @@
       <li>Throw statement</li>
       <li>Counter</li>
     </ol>
-  </section>
-
-  <section>
-    <pre><code>var bday = new Date(1989, 0, 25);
-      
-try{
-  assert("%Y should return full year",
-         Date.formats.Y(this.date) === 1989);
-  assert("%m should return month",
-        Date.formats.m(this.date) === "01");
-  assert("%d should return date",
-         Date.formats.d(this.date) === "25");
-  assert("%y should return year as two digits",
-        Date.formats.y(this.date) === "89");
-  assert("%F should be shortcut for %Y-%m-%d",
-         Date.formats.F === "%Y-%m-%d");
-}catch(e){
-  console.log("Test failed:" + message);
-}
-    </pre></code>
-  </section>
 </section>
 				<section>
+  <p class="left-align">strtime_test.js</p>
+  <pre><code>var date = new Date(1989, 0, 25);
+  try{
+
+    assert("%Y should return full year",
+           date.strftime("%Y") === "1989");
+    assert("%m should return month",
+          date.strftime("%m") === "01");
+    assert("%d should return date",
+           date.strftime("%d") === "25");
+    assert("%y should return year as two digits",
+        date.strftime("%y") === "89");
+    assert("%F should be shortcut for %Y-%m-%d",
+           date.strftime("%F") === "%Y-%m-%d");
+
+  }catch(e){
+    console.log("Test failed:" + e.message)
+  }</pre></code>
 </section>
 				<section>
+  <p>But...</p>
+  <img src="../assets/assert_fail_01.png">
+  <p>...what about the rest of the tests?</p>
+  <aside class="notes">
+    We need to be able to loop through each test case
+</aside>
+</section>
+				<section>
+  <p>Test Case: Set of related test functions</p>
+
+  <pre><code>testCaseFunction([
+    {assertion1},
+    {assertion2},
+    {assertion3},
+    ...
+    ])</pre></code>
 
 </section>
 				<section>
+  <p>Or something like this..</p>
+  <pre><code>testCase("strftime test", {
+  "test format specifier %Y": function () {
+      assert("%Y should return full year",
+             Date.formats.Y(this.date) === "1989");
+    },
 
-</section>
-				<section>
+    "test format specifier %m": function () {
+      assert("%m should return month",
+             Date.formats.m(this.date) === "01");
+    },
 
+    "test format specifier %d": function () {
+      assert("%d should return date",
+             Date.formats.d(this.date) === "25");
+    },
+
+    "test format specifier %y": function () {
+      assert("%y should return year as two digits",
+             Date.formats.y(this.date) === "89");
+    },
+
+    "test format shorthand %F": function () {
+      assert("%F should be shortcut for %Y-%m-%d",
+             Date.formats.F === "%Y-%m-%d");
+    }</pre></code>
 </section>
 				<section>
 

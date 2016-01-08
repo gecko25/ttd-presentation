@@ -3,8 +3,6 @@ function assert(message, expr) {
   if (!expr) {
     throw new Error(message);
   }
-  console.log('message=' + message);
-  console.log('expr=' + expr);
   assert.count++;
 
   return true;
