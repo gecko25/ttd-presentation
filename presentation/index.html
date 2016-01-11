@@ -123,10 +123,10 @@
     we need to check the output is giving us what we need</aside>
   <h3>How do we test this method?</h3>
   <ul>
-    <li>What do we expect the output to be?</li>
     <li>What is our assumed state?</li>
+    <li>What do we expect our output to be based on our assumed state?</li>    
   </ul>
-  <p class="fragment orange"><em>What do we expect our output to be based on our assumed state?</em></p>
+
 
 </section>
 				<section>
@@ -144,24 +144,35 @@
     %F:1989-1-25</pre></code>
 </section>
 				<section>
-  <h3>How can we make this automatic?</h3>
-  <h3>HTML test page!</h3>
+  <h2>This is not good.</h2>
+  <ul>
+    <li>Not repeatable</li>
+    <li>Manual process</li>
+  </ul>
+
+  <h3></br>How can we make this automatic?</h3>
+  <p>HTML test page</p>
   <aside class="notes">
-    Show strftime_test.html, strftime_test.js</br>
-    Show how this outputs in the console.
+    Writing tests like this is not quantifiable.</br>
+    Okay, so to make this more automatic, lets stop writing
+    directly into the console. Let's write some code that
+    we can deploy, in a repeatable way, from an html
+    test page.
+
   </aside>
 </section>
 				<section>
   <section>
-  <img src="../assets/strftime_test_html.png">
   <img src="../assets/strftime_js.png">
+  <img src="../assets/strftime_test_html.png">
   </section>
+  
   <section>
     <img src="../assets/console_output.png">
   </section>
   <aside class="notes">
     This is cool.. but there are obvious ways to make this better.</br>
-    
+
 
   </aside>
 </section>
@@ -181,9 +192,9 @@
     <p class="right-align small">"I expect the button to turn blue when I click it"</p>
   </div>
 </section>
-				<section>
+				<section class="position-relative">
     <h2>Assert Functions</h2>
-    <pre><code>function assert(message, expr) {
+      <pre><code>function assert(message, expr) {
     if (!expr) {
       throw new Error(message);
     }
@@ -194,13 +205,25 @@
   }
 
   assert.count = 0;
-    }</pre></code>
+      }</pre></code>
+
+<div class="slide9-assert">
+    <pre class="fragment"><code>assert("5 + 5 should equal 10", 5 + 5 === 10)</pre></code>
+    <pre class="fragment"><code>assert("%Y should return full year",
+           date.strftime("%Y") === "1989");</code></pre>
+</div>
 
     <ol>
       <li>Expression to evaluate</li>
       <li>Throw statement</li>
       <li>Counter</li>
     </ol>
+
+    <aside class="notes">
+
+    </aside>
+
+
 </section>
 				<section>
   <p class="left-align">strtime_test.js</p>

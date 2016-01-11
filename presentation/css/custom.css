@@ -1,15 +1,22 @@
-.orange{
-  color:#ff8533;
-}
+.orange {
+  color: #ff8533; }
 
-p.left-align{
-  text-align: left;
-}
+p.left-align {
+  text-align: left; }
 
-p.right-align{
-  text-align: left;
-}
+p.right-align {
+  text-align: left; }
 
-p.small{
-  font-size: smaller;
-}
+p.small {
+  font-size: smaller; }
+
+.position-relative {
+  position: relative; }
+
+div.slide9-assert {
+  width: 38vw;
+  position: absolute;
+  top: 37%;
+  left: 36%; }
+  div.slide9-assert pre code {
+    border: solid 1px red; }

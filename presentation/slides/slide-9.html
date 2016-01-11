@@ -1,6 +1,6 @@
-<section>
+<section class="position-relative">
     <h2>Assert Functions</h2>
-    <pre><code>function assert(message, expr) {
+      <pre><code>function assert(message, expr) {
     if (!expr) {
       throw new Error(message);
     }
@@ -11,11 +11,23 @@
   }
 
   assert.count = 0;
-    }</pre></code>
+      }</pre></code>
+
+<div class="slide9-assert">
+    <pre class="fragment"><code>assert("5 + 5 should equal 10", 5 + 5 === 10)</pre></code>
+    <pre class="fragment"><code>assert("%Y should return full year",
+           date.strftime("%Y") === "1989");</code></pre>
+</div>
 
     <ol>
       <li>Expression to evaluate</li>
       <li>Throw statement</li>
       <li>Counter</li>
     </ol>
+
+    <aside class="notes">
+
+    </aside>
+
+
 </section>
