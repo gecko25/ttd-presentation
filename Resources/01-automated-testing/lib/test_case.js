@@ -2,7 +2,7 @@
 /*globals assert, output*/
 
 
-/*modified for slide 14*/
+/*modified for slide 14
 function testCase(testname, tests) {
   var successful = 0;
   var testCount = 0;
@@ -26,14 +26,9 @@ function testCase(testname, tests) {
          (testCount - successful) + " failures</strong>",
          color);
 }
+*/
 
-
-
-
-
-
-
-/* With setup & teardown
+/* With setup & teardown */
 function testCase(name, tests) {
   assert.count = 0;
   var successful = 0;
@@ -75,4 +70,3 @@ function testCase(name, tests) {
          (testCount - successful) + " failures</strong>",
          color);
 }
-*/

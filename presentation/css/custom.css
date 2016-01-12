@@ -11,6 +11,9 @@
 .cyan {
   color: cyan; }
 
+.light-blue {
+  color: #4285F4; }
+
 /*POSITIONING*/
 p.left-align {
   text-align: left; }
@@ -54,12 +57,12 @@ div.box {
     left: 303px;
     border: dash; }
 
-div.slide9-assert {
+div.slide-9 {
   width: 38vw;
   position: absolute;
   top: 60%;
   left: 36%; }
-  div.slide9-assert pre code {
+  div.slide-9 pre code {
     border: solid 1px red; }
 
 div.slide-10 {
@@ -87,3 +90,8 @@ div.slide-13 {
       border: solid 1px red;
       opacity: 0.9;
       background-color: black; }
+
+div.slide-16 {
+  position: absolute;
+  top: 30%;
+  right: -25%; }

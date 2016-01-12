@@ -14,7 +14,9 @@
 .cyan{
   color:cyan;
 }
-
+.light-blue{
+  color: #4285F4;
+}
 /*POSITIONING*/
 p.left-align{
   text-align: left;
@@ -27,6 +29,7 @@ p.right-align{
 section.relative{
   position: relative;
 }
+
 
 /*PADDING & MARGIN*/
 p.zero{
@@ -71,7 +74,7 @@ div.box{
   }
 }
 
-div.slide9-assert{
+div.slide-9{
   width: 38vw;
   position: absolute;
   top: 60%;
@@ -113,4 +116,10 @@ div.slide-13{
       background-color: black;
     }
   }
+}
+
+div.slide-16{
+  position: absolute;
+  top: 30%;
+  right: -25%;
 }

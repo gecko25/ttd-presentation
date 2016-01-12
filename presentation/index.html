@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js – The HTML Presentation Framework</title>
+		<title>TDD presentation</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -230,7 +230,7 @@
     return true;
   }</pre></code>
 
-    <div class="slide9-assert">
+    <div class="slide-9">
         <pre class="fragment"><code>assert("5 + 5 should equal 10", 5 + 5 === 10)</pre></code>
         <pre class="fragment"><code>assert("%Y should return full year",
                date.strftime("%Y") === "1989");</code></pre>
@@ -314,9 +314,7 @@
       would be necessary to call highly individualized functions for each
       test.</li>
       <li>Okay, so what does such a testCase function look like?</li>
-
     </ul>
-
   </aside>
 
 
@@ -416,60 +414,114 @@
 
 
 </section>
-				<section>
+				<section class="relative">
+  <p>Complete test_case.js</p>
+    <pre><code class="zero smaller height-50">function testCase(name, tests) {
+        assert.count = 0;
+        var successful = 0;
+        var testCount = 0;
+        var hasSetup = typeof tests.setUp == "function";
+        var hasTeardown = typeof tests.tearDown == "function";
 
+        //If first word !=="test" skip to next
+        for (var test in tests) {
+          if (!/^test/.test(test)) {
+            continue;
+          }
+
+          testCount++;
+
+          try {
+            if (hasSetup) {
+              tests.setUp();
+            }
+
+            tests[test]();
+            output(test, "#0c0");
+
+            if (hasTeardown) {
+              tests.tearDown();
+            }
+
+            successful++;
+          } catch (e) {
+            output(test + " failed: " + e.message, "#c00");
+          }
+        }
+
+        var color = successful == testCount ? "#0c0" : "#c00";
+
+        output("<strong>" + testCount + " tests, " +
+               (testCount - successful) + " failures</strong>",
+               color);
+      }</code></pre>
+    <div class="fragment slide-16">
+      <img src="../assets/strfftime_test_js.png" alt="" />
+    </div>
+
+    <aside class="notes">
+      Now the creation of the object belongs to the testCase
+      method. This will be important later for "mocking".
+    </aside>
+</section>
+				<section>
+  <h3>Benefits of unit testing</h3>
+  <ul class="light-blue">
+    <li>Catching bugs during refactoring</li>
+    <li>Cross browser testing</li>
+    <li>Tests are self-documenting</li>
+    <li>Shorter feedback loops</li>
+  </ul>
+
+  <aside class="notes">
+      <ol>
+        <li>Without having tests before  you refactor..
+          there is nothing to ensure you didn't break something!</li>
+        <li>Visually inspecting browsers sucks. Running a tests
+          across our supported browsers could immediately tell us where a big lies</li>
+        <li>Tests serve as </li>
+        <li>You can quickly understand the point of the code thru tests</li>
+        <li>Writing tests forces you to use methods you are testing--
+        giving you a better understanding of what you're doing and leads
+        likely will prompt you to write cleaner interfaces</li>
+      </ol>
+  </aside>
+</section>
+				<section>
+  <aside class="notes">
+    We have gone over what a basic unit test is.
+    Now let's talk about Test Driven Development.
+    <ul>
+      <li>Rather than focusing on the code to make something work,
+        TTD starts by defining the end goal. Shifting a the focus
+      to the logic of the problem vs what framework to use etc.</li>
+      <li>Heavy focus on units in isolation == less bugs, less redundant code</li>
+      <li>Helps with design bc we are always
+        thinking in terms of use cases in unit tests</li>
+    </ul>
+  </aside>
+
+
+  <h2>Test Driven Development <em>Process</em></h2>
+  <h5>Putting unit testing in the front seat</h5>
 </section>
 				<section>
 
 </section>
-				<section>
-
-</section>
-				<section>
-
-</section>
-				<section>
-
-</section>
-				<section>
-
-</section>
-				<section>
-
-</section>
-				<section>
-
-</section>
-				<section>
-
-</section>
-				<section>
-
-</section>
-				<section>
-
-</section>
-				<section>
-
-</section>
-				<section>
-
-</section>
-				<section>
-
-</section>
-				<section>
-
-</section>
-				<section>
-
-</section>
-				<section>
-
-</section>
-				<section>
-
-</section>
+				<!-- build:include ../slides/slide-20.html --><!-- /build -->
+				<!-- build:include ../slides/slide-21.html --><!-- /build -->
+				<!-- build:include ../slides/slide-22.html --><!-- /build -->
+				<!-- build:include ../slides/slide-23.html --><!-- /build -->
+				<!-- build:include ../slides/slide-24.html --><!-- /build -->
+				<!-- build:include ../slides/slide-25.html --><!-- /build -->
+				<!-- build:include ../slides/slide-26.html --><!-- /build -->
+				<!-- build:include ../slides/slide-27.html --><!-- /build -->
+				<!-- build:include ../slides/slide-28.html --><!-- /build -->
+				<!-- build:include ../slides/slide-29.html --><!-- /build -->
+				<!-- build:include ../slides/slide-30.html --><!-- /build -->
+				<!-- build:include ../slides/slide-31.html --><!-- /build -->
+				<!-- build:include ../slides/slide-32.html --><!-- /build -->
+				<!-- build:include ../slides/slide-33.html --><!-- /build -->
 
 			</div>
 

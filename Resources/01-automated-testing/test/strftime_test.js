@@ -34,13 +34,9 @@ try{
 
 
 
-/*Part Three*/
+/*Part Three
 var date = new Date(1989, 0, 25);
 testCase("strftime test", {
-  /*setUp: function () {
-    this.date = new Date(2009, 9, 2, 22, 14, 45);
-  },*/
-
   "test format specifier %Y": function () {
     assert("%Y should return full year",
            Date.formats.Y(date) === 1989);
@@ -59,6 +55,39 @@ testCase("strftime test", {
   "test format specifier %y": function () {
     assert("%y should return year as two digits",
            Date.formats.y(date) === "89");
+  },
+
+  "test format shorthand %F": function () {
+    assert("%F should be shortcut for %Y-%m-%d",
+           Date.formats.F === "%Y-%m-%d");
+  }
+});*/
+
+/*Part Four*/
+testCase("strftime test", {
+  setUp: function () {
+    //'this' refers to the unnamed object paramer we are passing
+    this.date = new Date(1989, 0, 25);
+  },
+
+  "test format specifier is %Y": function () {
+    assert("%Y should return full year",
+           Date.formats.Y(this.date) === 1989);
+  },
+
+  "test format specifier %m": function () {
+    assert("%m should return month",
+           Date.formats.m(this.date) === "01");
+  },
+
+  "test format specifier %d": function () {
+    assert("%d should return date",
+           Date.formats.d(this.date) === "25");
+  },
+
+  "test format specifier %y": function () {
+    assert("%y should return year as two digits",
+           Date.formats.y(this.date) === "89");
   },
 
   "test format shorthand %F": function () {
