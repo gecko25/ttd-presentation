@@ -1,3 +1,69 @@
-<section>
+<section class="relative">
+  <aside class="notes">
+    <ul>
+    <li>There are several important things going on in this code
+
+    <li>This <code>testCase function</code> is going to loop
+    through each property on the object (key value pair).</li>
+
+    <li>The value here is the <code>assert</code> function that will tell
+    us if our test is truthy.</li>
+
+    <li>See here that the property value being returned here is a function,
+    and this function is immediately being called.</li>
+
+    <li>If it is TRUTHY, it will increment the successful counter
+      and output a message using the nifty <code>output function</code> to our html test page</li>
+
+    <li>If it is NOT truthy, it will catch the error.</br>
+      AND also will: </br>
+      output the message</br>
+      NOT increment the successful counter</br>
+      and--most importantly-- continue testing!</li>
+    <ul>
+  </aside>
+
+ <h2>testCase function</h2>
+
+ <pre><code class="zero height-50">function testCase(testname, tests) {
+     var successful = 0;
+     var testCount = 0;
+
+     output("<h1>" + testname + "</h1>");
+     for (var test in tests) {
+       testCount++;
+
+       try {
+         tests[test]();
+         output(test, "#0c0");
+         successful++;
+
+       } catch (e) {
+         output(test + " failed: " + e.message, "#c00");
+       }
+     }
+
+     var color = successful == testCount ? "#0c0" : "#c00";
+
+     output("<strong>" + testCount + " tests, " +
+            (testCount - successful) + " failures</strong>",
+            color);
+}</code></pre>
+
+   <div class="box s-13"></div>
+
+   <div class="slide-13">
+     <pre>
+       <code class="fragment">function output(text, color) {
+         var p = document.createElement("p");
+         p.innerHTML = text;
+         p.style.color = color;
+         document.body.appendChild(p);
+       }</code>
+     </pre>
+
+     <img class="fragment" src="../assets/strftime_test_html_13.png">
+   </div>
+
 
 </section>
