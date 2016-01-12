@@ -43,6 +43,11 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
+  <aside class="notes">
+    1. The basics of automated unit testing and assertions
+  </aside>
+
+
   <h1>Test Driven Development</h1>
   <h6>(With javascript &#9786;)</h6>
 </section>
@@ -52,6 +57,10 @@
 				<!-- Veritcal Nexted Slides-->
 <section>
   <section>
+    <aside class="notes">
+      How do we make sure this function is working the way we want?
+    </aside>
+    <p>Making an unit test</p>
     <pre><code>
   var mybirthday = new Date(1989, 0, 25);
   mybirthday.strftime('%m');  //"01"
@@ -61,7 +70,7 @@
   </section>
 
   <section>
-    <aside class="notes">Some notes</aside>
+    <aside class="notes"></aside>
 
     <pre><code>Date.prototype.strftime = (function () {
   function strftime(format) {
@@ -146,12 +155,13 @@
 				<section>
   <h2>This is okay... but not great</h2>
   <ul>
-    <li>Not repeatable</li>
-    <li>Manual process</li>
+    <li class="smaller red">Not repeatable</li>
+    <li class="smaller red">Manual process</li>
+    <li class="smaller red">Error detection via introspection</li>
   </ul>
 
-  <h3></br>How can we make this automatic?</h3>
-  <p>HTML test page</p>
+  <p></br>How can we make this automatic?</p>
+  <p class="smaller cyan">HTML test page!</p>
   <aside class="notes">
     Writing tests like this is not quantifiable.</br>
     Okay, so to make this more automatic, lets stop writing
@@ -177,19 +187,38 @@
   </aside>
 </section>
 				<section>
+  <h3>This is better... but still not great</h3>
+  <ul>
+    <li class="smaller green">Repeatable</li>
+    <li class="smaller green">Automatic process</li>
+    <li class="smaller red">Error detection via introspection</li>
+  </ul>
+
+  <p></br>How can we make it more obvious when a bug has occured?</p>
+  <p class="smaller cyan">Assertions!</p>
+  <aside class="notes">
+    Writing tests like this is not quantifiable.</br>
+    Okay, so to make this more automatic, lets stop writing
+    directly into the console. Let's write some code that
+    we can deploy, in a repeatable way, from an html
+    test page.
+
+  </aside>
+</section>
+				<section>
   <h2>Assertions</h2>
   <aside class="notes">
     Assertions are the heart of testing.</br>
     Remember the earlier slide?
   </aside>
   <p class="orange">
-    What do we expect our output to be</br>
+    What do we expect the outcome to be</br>
     based on our assumed state?
   </p></br>
 
   <div class="fragment cyan">
-    <p class="right-align small">"I expect, assuming date=Jan 25 1989, date.strfttime(%d) to return 25"</p>
-    <p class="right-align small">"I expect the button to turn blue when I click it"</p>
+    <p class="smaller">"I expect, assuming date=Jan 25 1989, date.strfttime(%d) to return 25"</p>
+    <p class="smaller">"I expect the button to turn blue when I click it"</p>
   </div>
 </section>
 				<section class="relative">
@@ -271,33 +300,56 @@
 
 </section>
 				<section>
+  <aside class="notes">
+    <ul>
+      <li>So we will construct a test case (suite of tests) to aggregate our
+      unit tests.</li>
+      <li>Note here the testCase function accepts a string param
+      and an object param. The object param has property-value pairs. </li>
+      <li>The property is a description of the test and the value is a function</li>
+      <li>This allows us to loop through the object param and call each
+      function.</li>
+      <li>Side note here: this highlights in a small way the power
+      of being able to pass functions around in js. Think about what
+      would be necessary to call highly individualized functions for each
+      test.</li>
+      <li>Okay, so what does such a testCase function look like?</li>
+
+    </ul>
+
+  </aside>
+
+
   <p>Or something like this..</p>
-  <pre><code class=" zero height-50">testCase("strftime test", {
-  "test format specifier %Y": function () {
-      assert("%Y should return full year",
-             Date.formats.Y(this.date) === "1989");
-    },
+  <pre><code class=" zero smaller height-50">var date = new Date(1989, 0, 25);
 
-    "test format specifier %m": function () {
-      assert("%m should return month",
-             Date.formats.m(this.date) === "01");
-    },
+  testCase("strftime test", {
 
-    "test format specifier %d": function () {
-      assert("%d should return date",
-             Date.formats.d(this.date) === "25");
-    },
+    "test format specifier %Y": function () {
+        assert("%Y should return full year",
+               Date.formats.Y(date) === "1989");
+      },
 
-    "test format specifier %y": function () {
-      assert("%y should return year as two digits",
-             Date.formats.y(this.date) === "89");
-    },
+      "test format specifier %m": function () {
+        assert("%m should return month",
+               Date.formats.m(date) === "01");
+      },
 
-    "test format shorthand %F": function () {
-      assert("%F should be shortcut for %Y-%m-%d",
-             Date.formats.F === "%Y-%m-%d");
-    }
-}</pre></code>
+      "test format specifier %d": function () {
+        assert("%d should return date",
+               Date.formats.d(date) === "25");
+      },
+
+      "test format specifier %y": function () {
+        assert("%y should return year as two digits",
+               Date.formats.y(date) === "89");
+      },
+
+      "test format shorthand %F": function () {
+        assert("%F should be shortcut for %Y-%m-%d",
+               Date.formats.F === "%Y-%m-%d");
+      }
+  }</pre></code>
 </section>
 				<section class="relative">
   <aside class="notes">
@@ -326,14 +378,12 @@
 
  <h2>testCase function</h2>
 
- <pre><code class="zero height-50">function testCase(testname, tests) {
-     var successful = 0;
-     var testCount = 0;
-
-     output("<h1>" + testname + "</h1>");
-     for (var test in tests) {
+ <pre><code class="zero">function testCase(testname, tests) {
+    output("<h1>" + testname + "</h1>");
+    var successful = 0;
+    var testCount = 0;</code><code class="fragment" data-fragment-index="2">
+    for (var test in tests) {
        testCount++;
-
        try {
          tests[test]();
          output(test, "#0c0");
@@ -342,20 +392,18 @@
        } catch (e) {
          output(test + " failed: " + e.message, "#c00");
        }
-     }
-
-     var color = successful == testCount ? "#0c0" : "#c00";
+     }</code><code class="fragment" data-fragment-index="4">     var color = successful == testCount ? "#0c0" : "#c00";
 
      output("<strong>" + testCount + " tests, " +
             (testCount - successful) + " failures</strong>",
             color);
 }</code></pre>
 
-   <div class="box s-13"></div>
+  <div class="box s-13 fragment" data-fragment-index="3"></div>
 
-   <div class="slide-13">
+  <div class="slide-13" data-fragment-index="1">
      <pre>
-       <code class="fragment">function output(text, color) {
+       <code class="fragment" data-fragment-index="1">function output(text, color) {
          var p = document.createElement("p");
          p.innerHTML = text;
          p.style.color = color;
@@ -366,9 +414,6 @@
      <img class="fragment" src="../assets/strftime_test_html_13.png">
    </div>
 
-
-</section>
-				<section>
 
 </section>
 				<section>

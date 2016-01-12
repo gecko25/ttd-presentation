@@ -1,16 +1,19 @@
 <section>
-  <h2>Assertions</h2>
-  <aside class="notes">
-    Assertions are the heart of testing.</br>
-    Remember the earlier slide?
-  </aside>
-  <p class="orange">
-    What do we expect our output to be</br>
-    based on our assumed state?
-  </p></br>
+  <h3>This is better... but still not great</h3>
+  <ul>
+    <li class="smaller green">Repeatable</li>
+    <li class="smaller green">Automatic process</li>
+    <li class="smaller red">Error detection via introspection</li>
+  </ul>
 
-  <div class="fragment cyan">
-    <p class="right-align small">"I expect, assuming date=Jan 25 1989, date.strfttime(%d) to return 25"</p>
-    <p class="right-align small">"I expect the button to turn blue when I click it"</p>
-  </div>
+  <p></br>How can we make it more obvious when a bug has occured?</p>
+  <p class="smaller cyan">Assertions!</p>
+  <aside class="notes">
+    Writing tests like this is not quantifiable.</br>
+    Okay, so to make this more automatic, lets stop writing
+    directly into the console. Let's write some code that
+    we can deploy, in a repeatable way, from an html
+    test page.
+
+  </aside>
 </section>

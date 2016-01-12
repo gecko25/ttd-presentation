@@ -2,6 +2,12 @@
 .orange {
   color: #ff8533; }
 
+.green {
+  color: green; }
+
+.red {
+  color: red; }
+
 .cyan {
   color: cyan; }
 
@@ -21,10 +27,10 @@ p.zero {
   margin: 0; }
 
 /*FONT*/
-p.small {
+p.smaller {
   font-size: smaller; }
 
-li.small {
+li.smaller {
   font-size: smaller; }
 
 /*WIDTH & HEIGHT*/

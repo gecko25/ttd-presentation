@@ -1,11 +1,35 @@
-<section>
-  <p>But...</p>
-  <img src="../assets/assert_fail_01.png">
-  <p>...what about the rest of the tests?</p>
+<section class="relative">
+  <p class="left-align zero ">strtime_test.js</p>
+  <pre><code class="height-50">var date = new Date(1989, 0, 25);
+  try{
+    assert("%Y should return full year",
+           date.strftime("%Y") === "1989");
 
-  <aside class="notes">
-    This gets us a step closer to having automatic, repeatable tests.</br>
-    But this does not give us the full picture of feedback.</br>
-    Did just this test fail? Did the others pass?
-</aside>
+    assert("%m should return month",
+          date.strftime("%m") === "01");
+
+    assert("%d should return date",
+           date.strftime("%d") === "25");
+
+    assert("%y should return year as two digits",
+        date.strftime("%y") === "89");
+
+    assert("%F should be shortcut for %Y-%m-%d",
+           date.strftime("%F") === "%Y-%m-%d");
+
+  }catch(e){
+    console.log("Test failed:" + e.message)
+  }</pre></code>
+
+<div class="slide-10">
+  <pre>
+    <code>function assert(message, expr) {
+    if (!expr) {
+      throw new Error(message);
+    }
+    return true;</code>
+  </pre>
+</div>
+
+
 </section>

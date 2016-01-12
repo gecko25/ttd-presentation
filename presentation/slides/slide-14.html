@@ -1,69 +1,52 @@
-<section class="relative">
+<section>
   <aside class="notes">
     <ul>
-    <li>There are several important things going on in this code
+      <li>So we will construct a test case (suite of tests) to aggregate our
+      unit tests.</li>
+      <li>Note here the testCase function accepts a string param
+      and an object param. The object param has property-value pairs. </li>
+      <li>The property is a description of the test and the value is a function</li>
+      <li>This allows us to loop through the object param and call each
+      function.</li>
+      <li>Side note here: this highlights in a small way the power
+      of being able to pass functions around in js. Think about what
+      would be necessary to call highly individualized functions for each
+      test.</li>
+      <li>Okay, so what does such a testCase function look like?</li>
 
-    <li>This <code>testCase function</code> is going to loop
-    through each property on the object (key value pair).</li>
+    </ul>
 
-    <li>The value here is the <code>assert</code> function that will tell
-    us if our test is truthy.</li>
-
-    <li>See here that the property value being returned here is a function,
-    and this function is immediately being called.</li>
-
-    <li>If it is TRUTHY, it will increment the successful counter
-      and output a message using the nifty <code>output function</code> to our html test page</li>
-
-    <li>If it is NOT truthy, it will catch the error.</br>
-      AND also will: </br>
-      output the message</br>
-      NOT increment the successful counter</br>
-      and--most importantly-- continue testing!</li>
-    <ul>
   </aside>
 
- <h2>testCase function</h2>
 
- <pre><code class="zero height-50">function testCase(testname, tests) {
-     var successful = 0;
-     var testCount = 0;
+  <p>Or something like this..</p>
+  <pre><code class=" zero smaller height-50">var date = new Date(1989, 0, 25);
 
-     output("<h1>" + testname + "</h1>");
-     for (var test in tests) {
-       testCount++;
+  testCase("strftime test", {
 
-       try {
-         tests[test]();
-         output(test, "#0c0");
-         successful++;
+    "test format specifier %Y": function () {
+        assert("%Y should return full year",
+               Date.formats.Y(date) === "1989");
+      },
 
-       } catch (e) {
-         output(test + " failed: " + e.message, "#c00");
-       }
-     }
+      "test format specifier %m": function () {
+        assert("%m should return month",
+               Date.formats.m(date) === "01");
+      },
 
-     var color = successful == testCount ? "#0c0" : "#c00";
+      "test format specifier %d": function () {
+        assert("%d should return date",
+               Date.formats.d(date) === "25");
+      },
 
-     output("<strong>" + testCount + " tests, " +
-            (testCount - successful) + " failures</strong>",
-            color);
-}</code></pre>
+      "test format specifier %y": function () {
+        assert("%y should return year as two digits",
+               Date.formats.y(date) === "89");
+      },
 
-   <div class="box s-13"></div>
-
-   <div class="slide-13">
-     <pre>
-       <code class="fragment">function output(text, color) {
-         var p = document.createElement("p");
-         p.innerHTML = text;
-         p.style.color = color;
-         document.body.appendChild(p);
-       }</code>
-     </pre>
-
-     <img class="fragment" src="../assets/strftime_test_html_13.png">
-   </div>
-
-
+      "test format shorthand %F": function () {
+        assert("%F should be shortcut for %Y-%m-%d",
+               Date.formats.F === "%Y-%m-%d");
+      }
+  }</pre></code>
 </section>

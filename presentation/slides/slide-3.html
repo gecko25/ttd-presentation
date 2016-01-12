@@ -1,6 +1,10 @@
 <!-- Veritcal Nexted Slides-->
 <section>
   <section>
+    <aside class="notes">
+      How do we make sure this function is working the way we want?
+    </aside>
+    <p>Making an unit test</p>
     <pre><code>
   var mybirthday = new Date(1989, 0, 25);
   mybirthday.strftime('%m');  //"01"
@@ -10,7 +14,7 @@
   </section>
 
   <section>
-    <aside class="notes">Some notes</aside>
+    <aside class="notes"></aside>
 
     <pre><code>Date.prototype.strftime = (function () {
   function strftime(format) {
