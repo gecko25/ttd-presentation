@@ -8,10 +8,13 @@
 .red {
   color: red; }
 
+.gray {
+  color: gray; }
+
 .cyan {
   color: cyan; }
 
-.light-blue {
+.light-blue, h3.light-blue {
   color: #4285F4; }
 
 /*POSITIONING*/
@@ -25,16 +28,23 @@ section.relative {
   position: relative; }
 
 /*PADDING & MARGIN*/
+h3.zero {
+  padding: 0;
+  margin: 0; }
+
 p.zero {
   padding: 0;
   margin: 0; }
 
 /*FONT*/
-p.smaller {
+p.smaller, li.smaller, ul.smaller {
   font-size: smaller; }
 
-li.smaller {
-  font-size: smaller; }
+p.larger {
+  font-size: larger; }
+
+section.center-lists ul {
+  text-align: center; }
 
 /*WIDTH & HEIGHT*/
 code.height-50 {
@@ -45,6 +55,9 @@ code.zero {
 
 code.smaller {
   font-size: smaller; }
+
+.width-smaller {
+  width: 75%; }
 
 /*CUSTOM*/
 div.box {

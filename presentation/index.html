@@ -489,35 +489,144 @@
 </section>
 				<section>
   <aside class="notes">
-    We have gone over what a basic unit test is.
-    Now let's talk about Test Driven Development.
     <ul>
-      <li>Rather than focusing on the code to make something work,
-        TTD starts by defining the end goal. Shifting a the focus
-      to the logic of the problem vs what framework to use etc.</li>
-      <li>Heavy focus on units in isolation == less bugs, less redundant code</li>
-      <li>Helps with design bc we are always
-        thinking in terms of use cases in unit tests</li>
+      <li>TDD starts with tests</li>
+      <li>Make a new object, function, etc.</li>
+      <li>Write the tests for them, watch them fail (bc nothing exists yet!).</li>
+      <li>Fill in with code, watch tests pass.</li>
+    </ul>
+
+    <ul>
+      <li>BDD doesn't start with tests</li>
+      <li>BDD doesn't necessarily test everything in an application</li>
+    </ul>
+
+    <ul>
+      <li>Both should test small units.</li>
+    </ul>
+
+    <ul>
+      <h4>EXAMPLE: writing a calculator</h4>
+      <li>test addition of positive numbers</li>
+      <li>test addition of neg numbers</li>
+    </ul>
+
+    <ul>
+      <li>TDD IMO is better.</li>
+      <li>Forces you to think before about logic only, NOT implementation.</li>
+      <li>Guaruntees there are always tests &amp; better code coverage</li>
     </ul>
   </aside>
 
 
-  <h2>Test Driven Development <em>Process</em></h2>
-  <h5>Putting unit testing in the front seat</h5>
+  <p class="larger gray">
+    <span class="orange">Test Driven Development (TDD)</br></span>
+    vs</br>
+    <span class="light-blue">Behavior Driven Development (BDD)</span>
+  </p>
+</section>
+				<section class="center-lists">
+  <h3 class="zero light-blue">Unit Test Frameworks</h3>
+    <ul class="smaller">
+      <li>Mocha</li>
+      <li>Qunit</li>
+      <li>Jasmine</li>
+      <li>Jest (for react)</li>
+    </ul>
+
+  <h3 class="zero light-blue">Assertion Libraries</h3>
+  <ul class="smaller">
+    <li>chai.js</li>
+    <li>assert.js</li>
+    <li>should.js</li>
+    <li>YUI Port</li>
+  </ul>
+
+  <aside class="notes">
+    <ul>
+      <li>Unit Test Framework -- </br>
+        is like the code from previous sections, but
+        much more thourogh and with more capabilities
+      </li>
+      <li>Assertion libraries -- </br>
+        fancy assert functions</li>
+    </ul>
+  </aside>
 </section>
 				<section>
+  <h3>Q-Unit</h3>
+
+  <pre><code>assert.equal( value, "hello", "We expect value to be hello" );
+  assert.ok( 1 == "1", "Passed!" );
+  assert.deepEqual( obj, { foo: "bar" }, "Two objects can be the same in value" );</code></pre>
+
+  <img class="width-smaller" src="../assets/qunit.png">
 
 </section>
-				<!-- build:include ../slides/slide-20.html --><!-- /build -->
-				<!-- build:include ../slides/slide-21.html --><!-- /build -->
-				<!-- build:include ../slides/slide-22.html --><!-- /build -->
-				<!-- build:include ../slides/slide-23.html --><!-- /build -->
-				<!-- build:include ../slides/slide-24.html --><!-- /build -->
-				<!-- build:include ../slides/slide-25.html --><!-- /build -->
-				<!-- build:include ../slides/slide-26.html --><!-- /build -->
-				<!-- build:include ../slides/slide-27.html --><!-- /build -->
-				<!-- build:include ../slides/slide-28.html --><!-- /build -->
-				<!-- build:include ../slides/slide-29.html --><!-- /build -->
+				
+<section>
+  <h3>JASMINE</h3>
+
+
+  -tests are refered to as specs
+</section>
+				<section>
+  examples of mocha assertion frameworks
+</section>
+				<section>
+  setting things up with mocha
+  - getting source code
+
+vocab
+  -get index.html from distribution (test runner)
+  -code actually being tested (system under test)
+  -test file itself (file with assertions)
+
+  quint
+  -multiple test runners & tests (true for all?)
+  -in quint the test runners === suites
+</section>
+				<section>
+  <img src="../assets/johansenBook.png">
+</section>
+				<section>
+  <img src="../assets/johansenBook.png">
+</section>
+				<section>
+  <img src="../assets/johansenBook.png">
+</section>
+				<section>
+  <img src="../assets/johansenBook.png">
+</section>
+				<section>
+  <img src="../assets/johansenBook.png">
+</section>
+				
+
+
+
+<!-- TBD ORDER -->
+<section class="center-lists">
+  <h3 class="zero light-blue">Test Runners</h3>
+  <ul class="smaller">
+    <li>Karma</li>
+    <li>Wallaby</li>
+  </ul>
+
+  <h3 class="zero light-blue">Mocking Frameworks</h3>
+  <ul class="smaller">
+    <li>sinon</li>
+    <li>assert.js</li>
+  </ul>
+
+  <h3 class="zero light-blue">Headless Browsers</h3>
+  <ul class="smaller">
+    <li>Web browser without GUI</li>
+    <li>phantom.js</li>
+    <li>jsdom</li>
+  </ul>
+
+</section>
 				<!-- build:include ../slides/slide-30.html --><!-- /build -->
 				<!-- build:include ../slides/slide-31.html --><!-- /build -->
 				<!-- build:include ../slides/slide-32.html --><!-- /build -->
