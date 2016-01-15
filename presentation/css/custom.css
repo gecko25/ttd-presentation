@@ -37,7 +37,7 @@ p.zero {
   margin: 0; }
 
 /*FONT*/
-p.smaller, li.smaller, ul.smaller {
+p.smaller, li.smaller, ul.smaller, code.smaller {
   font-size: smaller; }
 
 p.larger {
@@ -52,9 +52,6 @@ code.height-50 {
 
 code.zero {
   line-height: 110%; }
-
-code.smaller {
-  font-size: smaller; }
 
 .width-smaller {
   width: 75%; }

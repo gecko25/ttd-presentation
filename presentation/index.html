@@ -554,37 +554,84 @@
   </aside>
 </section>
 				<section>
-  <h3>Q-Unit</h3>
+  <section>
+    <h3>Q-Unit</h3>
+    <pre><code class="smaller"><!--<head>-->
+      	<title>QUnit Main Test Suite</title>
+      	<link rel="stylesheet" href="../dist/qunit.css">
+      	<!--qunit lib-->
+      	<script src="../dist/qunit.js"></script>
 
-  <pre><code>assert.equal( value, "hello", "We expect value to be hello" );
-  assert.ok( 1 == "1", "Passed!" );
-  assert.deepEqual( obj, { foo: "bar" }, "Two objects can be the same in value" );</code></pre>
+      	<!--include source files here.. -->
 
-  <img class="width-smaller" src="../assets/qunit.png">
+      	<!--include test files here..-->
+      	<script src="main/test.js"></script>
+<!--<head>-->
+
+<!--<body>.. not sure why tags not rendering..-->
+      	<div id="qunit"></div>
+      	<div id="qunit-fixture">test markup</div>
+<!--</body>-->
+      </code></pre>
+  </section>
+
+
+<section>
+  <pre><code class="smaller">QUnit.test( "expect query and multiple issue", function( assert ) {
+  	var value="hello";
+  	assert.equal( value, "hello", "We expect value to be hello" );
+
+  	assert.ok( 1 == "1", "1==1!" );
+  	var obj = {foo: "bar"}
+
+  	assert.deepEqual( obj, { foo: "bar" }, "Objects are the same in value" );
+  });</code></pre>
+
+  <a href="file:///Users/stankard/Documents/repositories/ttd/qunit/test/index.html">
+  <img class = "width-smaller" src="assets/qunitexample.png" alt="qunitexample" />
+  </a>
+</section>
+
 
 </section>
 				
 <section>
+  <section>
+
+
   <h3>JASMINE</h3>
+  <pre><code class="smaller"> <meta charset="utf-8">
+  <title>Jasmine Spec Runner v2.4.1</title>
 
+  <link rel="shortcut icon" type="image/png" href="lib/jasmine-2.4.1/jasmine_favicon.png">
+  <link rel="stylesheet" href="lib/jasmine-2.4.1/jasmine.css">
 
-  -tests are refered to as specs
+  <script src="lib/jasmine-2.4.1/jasmine.js"></script>
+  <script src="lib/jasmine-2.4.1/jasmine-html.js"></script>
+  <script src="lib/jasmine-2.4.1/boot.js"></script>
+
+  <!-- include source files here... -->
+  <script src="src/Calculator.js"></script>
+
+  <!-- include spec files here... -->
+  <script src="spec/CalculatorSpec.js"></script>
+</code></pre>
+  </section>
+
+  <section>
+    <img class="width-smaller" src="../assets/jasminecode.png">
+  </section>
+
+  <section>
+      <img src="../assets/jasminehtmlpage.png">
+  </section>
+
 </section>
 				<section>
   examples of mocha assertion frameworks
 </section>
 				<section>
-  setting things up with mocha
-  - getting source code
 
-vocab
-  -get index.html from distribution (test runner)
-  -code actually being tested (system under test)
-  -test file itself (file with assertions)
-
-  quint
-  -multiple test runners & tests (true for all?)
-  -in quint the test runners === suites
 </section>
 				<section>
   <img src="../assets/johansenBook.png">
