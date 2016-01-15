@@ -576,22 +576,31 @@
   </section>
 
 
-<section>
-  <pre><code class="smaller">QUnit.test( "expect query and multiple issue", function( assert ) {
-  	var value="hello";
-  	assert.equal( value, "hello", "We expect value to be hello" );
+  <section>
+    <pre><code class="smaller">   module('Test Suite 1')
 
-  	assert.ok( 1 == "1", "1==1!" );
-  	var obj = {foo: "bar"}
+    test( "test string hello", function( assert ) {
+    	var value="hello";
+    	assert.equal( value, "helo", "We expect value to be hello" );
 
-  	assert.deepEqual( obj, { foo: "bar" }, "Objects are the same in value" );
-  });</code></pre>
+    });
 
-  <a href="file:///Users/stankard/Documents/repositories/ttd/qunit/test/index.html">
-  <img class = "width-smaller" src="assets/qunitexample.png" alt="qunitexample" />
-  </a>
-</section>
+    module('Test Suite 2')
 
+    test( "test == operator and object equality", function( assert ) {
+    	assert.ok( 1 == "1", "1==1!" );
+    	var obj = {foo: "bar"}
+
+    	assert.deepEqual( obj, { foo: "bar" }, "Objects are the same in value" );
+    });</code></pre>
+  </section>
+
+
+  <section>
+    <a href="file:///Users/stankard/Documents/repositories/ttd/qunit/test/index.html">
+    <img class = "width-smaller" src="assets/quintexample.png" alt="qunitexample" />
+    </a>
+  </section>
 
 </section>
 				
@@ -628,7 +637,40 @@
 
 </section>
 				<section>
-  examples of mocha assertion frameworks
+  <section>
+    <h3>MOCHA</h3>
+    <pre><code class="smaller height-50">     <!--head-->
+      	<meta charset="UTF-8">
+      	<title>Mocha Tests</title>
+        <link rel="stylesheet" href="mocha.css">
+      <!--/head-->
+
+      <!--body-->
+        <div id="mocha"></div>
+        <!--lib-->
+        <script src="mocha.js"></script>
+        <script src="lib/interfaces/chai.js"></script>
+        <script>mocha.setup('bdd')</script>
+        <!--source files-->
+        <script src="src/Calculator.js"></script>
+
+        <!--test files-->
+      	<script src="test/calculatorSpec.js"></script>
+
+        <script type="text/javascript">
+          mocha.run();
+        </script>
+      <!--/body--></code></pre>
+  </section>
+
+  <section>
+    <img class="width-smaller" src="../assets/mochasourcecode.png">
+  </section>
+
+  <section>
+    <img class="width-smaller" src="../assets/mochaexample.png">
+  </section>
+
 </section>
 				<section>
 
