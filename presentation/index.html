@@ -689,7 +689,26 @@
   <h3>DOM testing?</h3>
 </section>
 				<section>
-  <img src="../assets/johansenBook.png">
+  <aside class="notes">
+    We are purposely trying to make this test fail.
+    For those of you not familar with js.. this is a
+    common way to simulate asynchronous tests and
+    callbacks. Basically after 1000ms the passed
+    callback will be called.
+  </aside>
+  <p>
+    What happens here?
+  </p>
+  <pre><code>describe("Asynctest", function(){
+      it('one should equal one', function(done){
+        setTimeout(function(){
+          expect(1).to.equal(4);
+          done();
+        }, 1000);
+      });
+    });</code></pre>
+
+  <img class="fragment" src="../assets/passingAsyncTest.png" alt="false positive async test" />
 </section>
 				<section>
   <img src="../assets/johansenBook.png">

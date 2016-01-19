@@ -2,7 +2,7 @@ var expect = chai.expect;
 var assert = chai.assert;
 
 describe("Asynctest", function(){
-  it('broken async test', function(done){
+  it('one should equal one', function(done){
     setTimeout(function(){
       expect(1).to.equal(4);
       done();
