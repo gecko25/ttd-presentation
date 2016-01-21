@@ -10,13 +10,12 @@
     What happens here?
   </p>
   <pre><code>describe("Asynctest", function(){
-      it('one should equal one', function(done){
+      it('one should equal one', function(){
         setTimeout(function(){
           expect(1).to.equal(4);
-          done();
         }, 1000);
       });
     });</code></pre>
 
-  <img class="fragment" src="../assets/passingAsyncTest.png" alt="false positive async test" />
+  <img class="fragment" src="../assets/falsePositiveAsyncTest.png" alt="false positive async test" />
 </section>

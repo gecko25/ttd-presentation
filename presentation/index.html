@@ -700,6 +700,27 @@
     What happens here?
   </p>
   <pre><code>describe("Asynctest", function(){
+      it('one should equal one', function(){
+        setTimeout(function(){
+          expect(1).to.equal(4);
+        }, 1000);
+      });
+    });</code></pre>
+
+  <img class="fragment" src="../assets/falsePositiveAsyncTest.png" alt="false positive async test" />
+</section>
+				<section>
+  <aside class="notes">
+    done object we can pass into any asynch test. </br>
+    this will tell mocha to wait to run the tests.
+    only after done() is called, will it run the
+    tests, ensuring that all our logic is
+    complete.
+  </aside>
+  <p>
+    using <span class="orange">done</span> object
+  </p>
+  <pre><code>describe("Asynctest", function(){
       it('one should equal one', function(done){
         setTimeout(function(){
           expect(1).to.equal(4);
@@ -711,10 +732,14 @@
   <img class="fragment" src="../assets/passingAsyncTest.png" alt="false positive async test" />
 </section>
 				<section>
-  <img src="../assets/johansenBook.png">
-</section>
-				<section>
-  <img src="../assets/johansenBook.png">
+  <p>
+    Reasons to test the DOM
+  </p>
+  <ul>
+    <li>Test that we are correctly manipulating the DOM</li>
+    <li>Our code correctly reads from DOM</li>
+    <li>Simulating event state</li>
+  </ul>
 </section>
 				<section>
   <img src="../assets/johansenBook.png">

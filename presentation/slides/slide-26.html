@@ -1,3 +1,22 @@
 <section>
-  <img src="../assets/johansenBook.png">
+  <aside class="notes">
+    done object we can pass into any asynch test. </br>
+    this will tell mocha to wait to run the tests.
+    only after done() is called, will it run the
+    tests, ensuring that all our logic is
+    complete.
+  </aside>
+  <p>
+    using <span class="orange">done</span> object
+  </p>
+  <pre><code>describe("Asynctest", function(){
+      it('one should equal one', function(done){
+        setTimeout(function(){
+          expect(1).to.equal(4);
+          done();
+        }, 1000);
+      });
+    });</code></pre>
+
+  <img class="fragment" src="../assets/passingAsyncTest.png" alt="false positive async test" />
 </section>
