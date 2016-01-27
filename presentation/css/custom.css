@@ -8,6 +8,9 @@
 .red {
   color: red; }
 
+.lavender-blue, ul.lavender-blue, h2.lavender-blue {
+  color: #99c1ff; }
+
 .gray {
   color: gray; }
 
@@ -37,7 +40,7 @@ p.zero {
   margin: 0; }
 
 /*FONT*/
-p.smaller, li.smaller, ul.smaller, code.smaller {
+p.smaller, li.smaller, ul.smaller, code.smaller, span.smaller {
   font-size: smaller; }
 
 p.larger {

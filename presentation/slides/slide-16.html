@@ -1,4 +1,6 @@
 <section class="relative">
+
+
   <p>Complete test_case.js</p>
     <pre><code class="zero smaller height-50">function testCase(name, tests) {
         assert.count = 0;
@@ -39,11 +41,16 @@
                (testCount - successful) + " failures</strong>",
                color);
       }</code></pre>
-    <div class="fragment slide-16">
+    <div class="slide-16">
       <img src="../assets/strfftime_test_js.png" alt="" />
     </div>
 
     <aside class="notes">
+      We also can now add some more functionality to the
+      testCase function like setup and teardown.</br>
+      
+      Now this date object belongs to the testCase function</br>
+
       Now the creation of the object belongs to the testCase
       method. This will be important later for "mocking".
     </aside>

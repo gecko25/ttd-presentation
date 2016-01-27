@@ -499,6 +499,8 @@ mybirthday.strftime('%F');  //"1989-01-25"</pre></code>
 
 </section>
 				<section class="relative">
+
+
   <p>Complete test_case.js</p>
     <pre><code class="zero smaller height-50">function testCase(name, tests) {
         assert.count = 0;
@@ -539,22 +541,37 @@ mybirthday.strftime('%F');  //"1989-01-25"</pre></code>
                (testCount - successful) + " failures</strong>",
                color);
       }</code></pre>
-    <div class="fragment slide-16">
+    <div class="slide-16">
       <img src="../assets/strfftime_test_js.png" alt="" />
     </div>
 
     <aside class="notes">
+      We also can now add some more functionality to the
+      testCase function like setup and teardown.</br>
+      
+      Now this date object belongs to the testCase function</br>
+
       Now the creation of the object belongs to the testCase
       method. This will be important later for "mocking".
     </aside>
 </section>
 				<section>
-  <h3>Benefits of unit testing</h3>
-  <ul class="light-blue">
-    <li>Catching bugs during refactoring</li>
-    <li>Cross browser testing</li>
+  <h2>Benefits of unit testing</h2>
+  <ul class="lavender">
+    <li>Automatic</li>
+    <li>Good for long-term</br>
+      <ul>
+        <li class="smaller light-blue">New people dont unknowingly break stuff</li>
+        <li class="smaller light-blue">Catches bugs during refactoring</li>
+      </ul>
+
+    </li>
     <li>Tests are self-documenting</li>
     <li>Shorter feedback loops</li>
+    <li>More thoughtful development </br>
+      <ul>
+        <li class="smaller light-blue">preemptively set expectations vs. reactive programming</li>
+      </ul>
   </ul>
 
   <aside class="notes">
@@ -571,44 +588,7 @@ mybirthday.strftime('%F');  //"1989-01-25"</pre></code>
       </ol>
   </aside>
 </section>
-				<section>
-  <aside class="notes">
-    <ul>
-      <li>TDD starts with tests</li>
-      <li>Make a new object, function, etc.</li>
-      <li>Write the tests for them, watch them fail (bc nothing exists yet!).</li>
-      <li>Fill in with code, watch tests pass.</li>
-    </ul>
-
-    <ul>
-      <li>BDD doesn't start with tests</li>
-      <li>BDD doesn't necessarily test everything in an application</li>
-    </ul>
-
-    <ul>
-      <li>Both should test small units.</li>
-    </ul>
-
-    <ul>
-      <h4>EXAMPLE: writing a calculator</h4>
-      <li>test addition of positive numbers</li>
-      <li>test addition of neg numbers</li>
-    </ul>
-
-    <ul>
-      <li>TDD IMO is better.</li>
-      <li>Forces you to think before about logic only, NOT implementation.</li>
-      <li>Guaruntees there are always tests &amp; better code coverage</li>
-    </ul>
-  </aside>
-
-
-  <p class="larger gray">
-    <span class="orange">Test Driven Development (TDD)</br></span>
-    vs</br>
-    <span class="light-blue">Behavior Driven Development (BDD)</span>
-  </p>
-</section>
+				<!-- skip slide 18 -->
 				<section class="center-lists">
   <h3 class="zero light-blue">Unit Test Frameworks</h3>
     <ul class="smaller">
@@ -627,17 +607,13 @@ mybirthday.strftime('%F');  //"1989-01-25"</pre></code>
   </ul>
 
   <aside class="notes">
-    <ul>
-      <li>Unit Test Framework -- </br>
-        is like the code from previous sections, but
-        much more thourogh and with more capabilities
-      </li>
-      <li>Assertion libraries -- </br>
-        fancy assert functions</li>
-    </ul>
+    true TTD writes every single test
   </aside>
 </section>
 				<section>
+  <aside class="notes">
+    So what do some of these frameworks look like?
+  </aside>
   <section>
     <h3>Q-Unit</h3>
     <pre><code class="smaller"><!--<head>-->
@@ -748,6 +724,9 @@ mybirthday.strftime('%F');  //"1989-01-25"</pre></code>
   </section>
 
   <section>
+    <aside class="mocha ">
+      see how mocha supports assert statements as well as expect statements
+    </aside>
     <img class="width-smaller" src="../assets/mochasourcecode.png">
   </section>
 
@@ -816,9 +795,13 @@ mybirthday.strftime('%F');  //"1989-01-25"</pre></code>
   <img class="fragment" src="../assets/passingAsyncTest.png" alt="false positive async test" />
 </section>
 				<section>
-  <p>
-    Reasons to test the DOM
-  </p>
+  <aside class="notes">
+    Testing the DOM is tricky.
+    So its hard to test things visually (like this should be
+    10px from edge of screen)
+    But we cannnn test functionality.
+  </aside>
+  <h2 class="lavender-blue">Reasons to test the DOM</h2>
   <ul>
     <li>Test that we are correctly manipulating the DOM</li>
     <li>Our code correctly reads from DOM</li>
@@ -829,6 +812,10 @@ mybirthday.strftime('%F');  //"1989-01-25"</pre></code>
   <h2>Example</h2>
   <p>
     Testing the DOM
+  </p>
+
+  <p class="smaller">
+    file:///Users/stankard/Documents/repositories/email_project2
   </p>
 
   <aside class="notes">
@@ -844,13 +831,36 @@ mybirthday.strftime('%F');  //"1989-01-25"</pre></code>
   </aside>
 </section>
 				<section>
-  <h2>Headless DOM &amp; Test Runners</h2>
-</section>
-				<section>
-  <h2>spies and mocking</h2>
-</section>
-				<section>
+  <h2>Mocking objects and spies</h2>
+    <ul>
+    <li>Isolation</li>
+    <li>Easy flow control</li>
+    <li>Remove interaction with complex or external systems</li>
+  </ul>
+  <p>
+    <a href="https://app.pluralsight.com/player?course=testing-javascript&author=joe-eames&name=testing-javascript-m4-mocking&clip=2&mode=live">
+    https://app.pluralsight.com/player?course=testing-javascript&author=joe-eames&name=testing-javascript-m4-mocking&clip=2&mode=live</a>
 
+      </p>
+</section>
+				<section>
+  <h2>Headless DOM, Test Runners, and Wallaby.js </h2>
+  <ul>
+    <li>Current state: More automatic, but I still have to refresh screen</li>
+  </ul>
+  <img class="width-smaller" src="/assets/testrunners.png" alt="" />
+</section>
+				<section>
+  <h2>Future projects &amp; what I learned</h2>
+  <ul class='light-blue'>
+    <li>Helped me learn about DOM </li>
+      <ul>
+        <li class="smaller lavender-blue">In order to be able to test it, you have to understand it!</li>
+      </ul>
+      <li>Hard for me to configure, but configuration is available to make things very automatic</li>
+      <li>Made me want to write smaller units of code</li>
+      <li>Could we somehow incorporate with QA?</li>
+  </ul>
 </section>
 				<section>
 
