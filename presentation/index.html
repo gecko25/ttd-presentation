@@ -44,7 +44,16 @@
 			<div class="slides">
 				<section>
   <aside class="notes">
-    1. The basics of automated unit testing and assertions
+    1. Today I'm going to go over basics of unit testing in Javascript.</br>
+    2. This is not a new topic. This presentation should hopefully be a nice
+    review for people, an introduction to those not familar (maybe QA), and
+    a learning process for me.
+    3. What I want to show is:</br>
+        - a bit of the code behind framworks </br>
+        - some javascript frameworks </br>
+        - some features &amp; and vocabulary of testing </br>
+    4. Get people (on all teams) thinking about
+    how we can use testing in our upcoming projects. 
   </aside>
 
 
@@ -52,13 +61,28 @@
   <h6>(With javascript &#9786;)</h6>
 </section>
 				<section>
-  <img src="../assets/johansenBook.png">
+  <img class="width-45" src="../assets/johansenBook.png">
+  <img class="width-half" src="../assets/clientsidetestingjoeeames.png">
+
+  
 </section>
 				<!-- Veritcal Nexted Slides-->
 <section>
   <section>
     <aside class="notes">
-      How do we make sure this function is working the way we want?
+      Okay so what does unit testing mean in code?</br>
+      This perhaps is very obvious to some of our veterans.. but for me this was new.</br>
+      For me, and I think lots of devs, Ive been making messy unit tests for years.</br>
+
+      Basically, I have a function (a unit) of code. And I want to 100% be sure it
+      is working the way I think it is. </br>
+
+      How do I do that?</br>
+
+      So this is a function that takes some Date information, a formatter string,
+      and outputs the date in a string format that we like. How can we be sure
+      this is working the way we intend?</br>
+
     </aside>
     <p>Making an unit test</p>
     <pre><code>
@@ -70,7 +94,10 @@
   </section>
 
   <section>
-    <aside class="notes"></aside>
+    <aside class="notes">
+
+
+    </aside>
 
     <pre><code>Date.prototype.strftime = (function () {
   function strftime(format) {
@@ -127,18 +154,35 @@
 </section>
 				<section>
   <aside class="notes">
-    Ask people what do we need to test here?
-    Without getting very detail oriented, first and foremost
-    we need to check the output is giving us what we need</aside>
+    So, before we actually do anything code-wise, we need to think: </br>
+    1. What is our assumed state?</br>
+    2. What is our expected output going to be based on this assumed state?</br>
+
+    So, here our assumed state is given a date object January 25, 1989
+    and the formater '%m', we expect a string output of '01', and same with %F.</br>
+
+    Okay, so how do we check this? 
+
+
+</aside>
   <h3>How do we test this method?</h3>
   <ul>
     <li>What is our assumed state?</li>
-    <li>What do we expect our output to be based on our assumed state?</li>    
+    <li>What do we expect our output to be based on our assumed state?</li>
   </ul>
 
+  <pre><code>var mybirthday = new Date(1989, 0, 25);
+mybirthday.strftime('%m');  //"01"
+mybirthday.strftime('%F');  //"1989-01-25"</pre></code>
 
 </section>
 				<section>
+    <aside class="notes">
+      So what I, and most starting devs, probably do would be to make
+      some sort of console.log or println statement at various points
+      in our program.</br> 
+    </aside>
+
     <h3>Without automated testing:</h3>
     <pre><code>var date = new Date(1989, 0, 25);
     console.log('%Y:' + date.strftime('%Y'));
@@ -176,14 +220,17 @@
   <img src="../assets/strftime_js.png">
   <img src="../assets/strftime_test_html.png">
   </section>
-  
+
   <section>
     <img src="../assets/console_output.png">
   </section>
   <aside class="notes">
-    This is cool.. but there are obvious ways to make this better.</br>
-
-
+    So instead of manually writing these console statements in our console,
+    lets put them in a file.. and run them automatically.</br>
+    See here we have made a strftime.js and included it so it outputs
+    when our page loads
+    </br>
+    Now we don't have to run each time.
   </aside>
 </section>
 				<section>
@@ -209,7 +256,9 @@
   <h2>Assertions</h2>
   <aside class="notes">
     Assertions are the heart of testing.</br>
-    Remember the earlier slide?
+    This is a slight shift in thinking here. </br>
+    Instead of inspecting the output and checking, yes this is right, no this is wrong.
+    We instead BEFORE say, I expect the output to be this. 
   </aside>
   <p class="orange">
     What do we expect the outcome to be</br>
@@ -237,12 +286,23 @@
     </div>
 
     <aside class="notes">
-
+        So this is a very simple assert function.</br>
+        it checks if a statement returns true, and if it returns true all is good.</br>
+        If it returns false, then it will throw an exception.</br>
     </aside>
 
 
 </section>
 				<section class="relative">
+
+  <aside class="notes">
+    So now we can put all of those console log statements into assert statements.</br>
+    Now, instead of inspecting a console.log statement.. we will just read
+    anything that fails.
+  </aside>
+
+  <img class="slide-11-left" src="../assets/strftime_js.png">
+
   <p class="left-align zero ">strtime_test.js</p>
   <pre><code class="height-50">var date = new Date(1989, 0, 25);
   try{
@@ -289,6 +349,13 @@
 </aside>
 </section>
 				<section>
+
+  <aside class="notes">
+    Instead of having a try catch block, we need something
+    that loops over every test. So that is one test fails,
+    the others tests still run.
+  </aside>
+
   <p>Test Case: Set of related test functions</p>
 
   <pre><code>testCaseFunction([
@@ -309,10 +376,9 @@
       <li>The property is a description of the test and the value is a function</li>
       <li>This allows us to loop through the object param and call each
       function.</li>
-      <li>Side note here: this highlights in a small way the power
-      of being able to pass functions around in js. Think about what
-      would be necessary to call highly individualized functions for each
-      test.</li>
+
+      <li>NOTE: This is a very js way of doing this. In Java or other class-oriented
+      languages it would be done differently. </li>
       <li>Okay, so what does such a testCase function look like?</li>
     </ul>
   </aside>
@@ -351,11 +417,21 @@
 </section>
 				<section class="relative">
   <aside class="notes">
+     So, I am going to show the internals of this function for completeness.
+     Its not necessary to really understand, as framworks now write all these
+     kinds of functions for us, but I always like to see whats going on at
+     a low level.</br></br>
+
     <ul>
     <li>There are several important things going on in this code
 
     <li>This <code>testCase function</code> is going to loop
     through each property on the object (key value pair).</li>
+
+    <li>It also introduces an output function, that is going to
+      put our output in the browser instead of having to read
+      the console.
+     </li>
 
     <li>The value here is the <code>assert</code> function that will tell
     us if our test is truthy.</li>
@@ -410,6 +486,14 @@
      </pre>
 
      <img class="fragment" src="../assets/strftime_test_html_13.png">
+   </div>
+
+   <div class="testCaseCode-s15 fragment" data-fragment-index="2">
+     <pre><code>testCase("description of testcase", {
+     "description of assert": function(){assert()},
+     "description of assert2": function(){assert()},
+     "description of assert3": function(){assert()}
+ })</code></pre>
    </div>
 
 

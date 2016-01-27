@@ -1,13 +1,24 @@
 <section>
   <aside class="notes">
-    Ask people what do we need to test here?
-    Without getting very detail oriented, first and foremost
-    we need to check the output is giving us what we need</aside>
+    So, before we actually do anything code-wise, we need to think: </br>
+    1. What is our assumed state?</br>
+    2. What is our expected output going to be based on this assumed state?</br>
+
+    So, here our assumed state is given a date object January 25, 1989
+    and the formater '%m', we expect a string output of '01', and same with %F.</br>
+
+    Okay, so how do we check this? 
+
+
+</aside>
   <h3>How do we test this method?</h3>
   <ul>
     <li>What is our assumed state?</li>
-    <li>What do we expect our output to be based on our assumed state?</li>    
+    <li>What do we expect our output to be based on our assumed state?</li>
   </ul>
 
+  <pre><code>var mybirthday = new Date(1989, 0, 25);
+mybirthday.strftime('%m');  //"01"
+mybirthday.strftime('%F');  //"1989-01-25"</pre></code>
 
 </section>

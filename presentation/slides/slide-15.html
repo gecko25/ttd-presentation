@@ -1,10 +1,20 @@
 <section class="relative">
   <aside class="notes">
+     So, I am going to show the internals of this function for completeness.
+     Its not necessary to really understand, as framworks now write all these
+     kinds of functions for us, but I always like to see whats going on at
+     a low level.</br></br>
+
     <ul>
     <li>There are several important things going on in this code
 
     <li>This <code>testCase function</code> is going to loop
     through each property on the object (key value pair).</li>
+
+    <li>It also introduces an output function, that is going to
+      put our output in the browser instead of having to read
+      the console.
+     </li>
 
     <li>The value here is the <code>assert</code> function that will tell
     us if our test is truthy.</li>
@@ -59,6 +69,14 @@
      </pre>
 
      <img class="fragment" src="../assets/strftime_test_html_13.png">
+   </div>
+
+   <div class="testCaseCode-s15 fragment" data-fragment-index="2">
+     <pre><code>testCase("description of testcase", {
+     "description of assert": function(){assert()},
+     "description of assert2": function(){assert()},
+     "description of assert3": function(){assert()}
+ })</code></pre>
    </div>
 
 

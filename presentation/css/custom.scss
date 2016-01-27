@@ -78,6 +78,18 @@ code.zero{
   width: 75%;
 }
 
+.width-half{
+  width: 50%;
+}
+
+.width-45{
+  width: 45%;
+}
+
+.margin-auto{
+  margin: auto;
+}
+
 /*CUSTOM*/
 div.box{
   border: 1px red solid;
@@ -108,7 +120,7 @@ div.slide-10{
   width: 50%;
   position: absolute;
   top:-5%;
-  left: 65%;
+  left: 75%;
   pre{
     box-shadow: none;
     code{
@@ -120,11 +132,35 @@ div.slide-10{
   }
 }
 
+img.slide-11-left{
+  position: absolute;
+  left: 75%;
+  top: 20vh;
+  z-index: 1000;
+  width: 45%;
+}
+
 div.slide-13{
   width: 60%;
   position: absolute;
   top:15%;
   left: 60%;
+  pre{
+    box-shadow: none;
+    code{
+      font-size: smaller;
+      border: solid 1px red;
+      opacity: 0.9;
+      background-color: black;
+    }
+  }
+}
+
+div.testCaseCode-s15{
+  width: 80%;
+  position: absolute;
+  top:-10%;
+  left: -20%;
   pre{
     box-shadow: none;
     code{

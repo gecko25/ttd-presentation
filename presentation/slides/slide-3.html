@@ -2,7 +2,19 @@
 <section>
   <section>
     <aside class="notes">
-      How do we make sure this function is working the way we want?
+      Okay so what does unit testing mean in code?</br>
+      This perhaps is very obvious to some of our veterans.. but for me this was new.</br>
+      For me, and I think lots of devs, Ive been making messy unit tests for years.</br>
+
+      Basically, I have a function (a unit) of code. And I want to 100% be sure it
+      is working the way I think it is. </br>
+
+      How do I do that?</br>
+
+      So this is a function that takes some Date information, a formatter string,
+      and outputs the date in a string format that we like. How can we be sure
+      this is working the way we intend?</br>
+
     </aside>
     <p>Making an unit test</p>
     <pre><code>
@@ -14,7 +26,10 @@
   </section>
 
   <section>
-    <aside class="notes"></aside>
+    <aside class="notes">
+
+
+    </aside>
 
     <pre><code>Date.prototype.strftime = (function () {
   function strftime(format) {
