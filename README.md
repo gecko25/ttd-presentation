@@ -9,4 +9,6 @@ To start this presentation navigate to command line, clone, & serve:
 
 `cd ttd-presentation/presentation`
 
+`npm install`
+
 `grunt serve`
